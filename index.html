@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Learning Galaxy</title>
+
+<!-- ═══════ EDIT HERE ═══════ -->
+<script>
+var PX='2055008918787673';
+var CN='Learning Galaxy';
+var TG='https://t.me/+FJuK7VBOcSNiNGY1';
+var TM=30;
+</script>
+<!-- ════════════════════════ -->
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init',PX);fbq('track','PageView');
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;color-scheme:light only}
+body{
+  font-family:system-ui,-apple-system,sans-serif;
+  background:#fff;
+  max-width:430px;
+  margin:0 auto;
+  min-height:100vh;
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ── 1. TOP BAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;
+  border-bottom:1px solid #f1f5f9;
+  background:#fff;
+  position:sticky;top:0;z-index:100;
+}
+.tb-brand{display:flex;align-items:center;gap:9px}
+.tb-emoji{
+  width:34px;height:34px;
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;
+}
+.tb-name{font-size:14px;font-weight:700;color:#0f172a}
+.tb-badge{
+  display:flex;align-items:center;gap:5px;
+  background:#dcfce7;
+  padding:5px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;color:#16a34a;
+}
+.tb-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:bl 1.5s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* ── 2. HERO ── */
+.hero{
+  padding:28px 20px 0;
+  text-align:center;
+}
+.h-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:700;
+  color:#f97316;margin-bottom:14px;
+  letter-spacing:.2px;
+}
+.h-title{
+  font-size:32px;font-weight:800;
+  color:#0f172a;line-height:1.12;
+  letter-spacing:-.5px;margin-bottom:12px;
+}
+.h-title span{
+  background:linear-gradient(90deg,#f97316,#ef4444);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.h-sub{
+  font-size:14px;color:#64748b;
+  line-height:1.6;margin-bottom:20px;
+}
+
+/* Members row */
+.members-row{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff7ed;border:1px solid #fed7aa;
+  padding:8px 16px;border-radius:100px;
+  margin-bottom:24px;
+}
+.m-faces{display:flex}
+.m-face{
+  width:26px;height:26px;border-radius:50%;
+  border:2px solid #fff;
+  margin-left:-7px;
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;
+  flex-shrink:0;
+}
+.m-face:first-child{margin-left:0}
+.m-text{font-size:12px;font-weight:600;color:#9a3412}
+
+/* ── 3. LIVE TICKER ── */
+.ticker-wrap{
+  background:#0f172a;
+  padding:10px 0;
+  overflow:hidden;
+  position:relative;
+}
+.ticker-wrap::before,.ticker-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:32px;z-index:2;
+}
+.ticker-wrap::before{left:0;background:linear-gradient(90deg,#0f172a,transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(-90deg,#0f172a,transparent)}
+.ticker{
+  display:flex;gap:0;
+  animation:scroll 18s linear infinite;
+  white-space:nowrap;
+}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0 20px;
+  font-size:11px;font-weight:600;color:rgba(255,255,255,.7);
+}
+.tick-item .green{color:#4ade80;font-size:8px}
+
+/* ── 4. TIMER ── */
+.timer-blk{
+  margin:20px 16px;
+  background:linear-gradient(135deg,#fff7ed,#fff);
+  border:2px solid #fed7aa;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.timer-blk::before{
+  content:'';position:absolute;
+  top:-30px;right:-30px;
+  width:100px;height:100px;
+  background:radial-gradient(circle,rgba(249,115,22,.12),transparent);
+  border-radius:50%;
+}
+.tm-top{
+  font-size:11px;font-weight:700;
+  color:#9a3412;text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:8px;
+}
+.tm-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:6px;margin-bottom:14px;
+}
+.tm-num{
+  font-size:48px;font-weight:800;
+  color:#0f172a;line-height:1;
+  letter-spacing:-3px;
+  font-variant-numeric:tabular-nums;
+  transition:color .3s;
+}
+.tm-num.red{color:#ef4444}
+.tm-colon{font-size:36px;font-weight:700;color:#cbd5e1;margin-bottom:4px}
+.tm-unit{font-size:12px;font-weight:600;color:#94a3b8;margin-top:4px}
+
+/* Segmented bar */
+.seg-bar{
+  display:flex;gap:3px;
+}
+.seg{
+  flex:1;height:5px;border-radius:5px;
+  background:#fed7aa;
+  transition:background .4s;
+}
+.seg.done{background:linear-gradient(90deg,#f97316,#ef4444)}
+
+/* ── 5. CHIPS ── */
+.chips-label{
+  padding:0 16px 8px;
+  font-size:11px;font-weight:700;
+  color:#94a3b8;text-transform:uppercase;letter-spacing:.7px;
+}
+.chips-scroll{
+  display:flex;gap:8px;
+  overflow-x:auto;
+  padding:0 16px 16px;
+  scrollbar-width:none;
+}
+.chips-scroll::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:7px;
+  background:#f8fafc;
+  border:1.5px solid #e2e8f0;
+  border-radius:100px;
+  padding:9px 16px;
+  font-size:12px;font-weight:600;color:#334155;
+  white-space:nowrap;
+}
+.chip-ico{font-size:16px}
+
+/* ── 6. CTA BLOCK ── */
+.cta-blk{
+  padding:8px 16px 12px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.redir{
+  display:none;
+  background:#ecfdf5;border:1px solid #bbf7d0;
+  color:#15803d;padding:12px;border-radius:12px;
+  text-align:center;font-weight:600;font-size:13px;
+  margin-bottom:10px;
+  width:100%;
+}
+.redir.on{display:block}
+
+/* THE BIG BUTTON */
+.big-btn{
+  display:block;
+  width:100%;
+  background:linear-gradient(135deg,#ea580c,#f97316,#fb923c);
+  border-radius:20px;
+  padding:2px;
+  text-decoration:none;
+  box-shadow:0 16px 40px rgba(234,88,12,.4);
+  animation:btnPulse 2s ease infinite;
+  transition:transform .15s;
+}
+.big-btn:active{transform:scale(.97)}
+@keyframes btnPulse{
+  0%,100%{box-shadow:0 16px 40px rgba(234,88,12,.4)}
+  50%{box-shadow:0 16px 52px rgba(234,88,12,.65),0 0 0 8px rgba(234,88,12,.1)}
+}
+.btn-body{
+  background:linear-gradient(135deg,#ea580c,#f97316);
+  border-radius:18px;
+  padding:18px 20px;
+  display:flex;align-items:center;
+  gap:14px;
+}
+.btn-left-ico{
+  width:48px;height:48px;flex-shrink:0;
+  background:rgba(255,255,255,.18);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;
+}
+.btn-copy{flex:1}
+.btn-tag{
+  font-size:10px;font-weight:700;
+  color:rgba(255,255,255,.75);
+  text-transform:uppercase;letter-spacing:.6px;
+  margin-bottom:3px;
+}
+.btn-main{
+  font-size:19px;font-weight:800;
+  color:#fff;letter-spacing:-.2px;
+}
+.btn-arrow-box{
+  width:40px;height:40px;flex-shrink:0;
+  background:rgba(255,255,255,.15);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.arr{
+  font-size:20px;color:#fff;
+  animation:arrMove 1.2s ease infinite;
+  display:block;
+}
+@keyframes arrMove{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(5px)}
+}
+
+/* Urgency strip below button */
+.urgency{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  margin-top:10px;
+  font-size:11px;font-weight:600;color:#ef4444;
+}
+.urgency-dot{width:6px;height:6px;background:#ef4444;border-radius:50%;animation:bl 1s infinite}
+
+.disc{
+  margin:16px 16px 28px;
+  font-size:10px;color:#cbd5e1;
+  text-align:center;line-height:1.75;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="tb-brand">
+    <div class="tb-emoji">🌌</div>
+    <div class="tb-name" id="cn">Learning Galaxy</div>
+  </div>
+  <div class="tb-badge"><span class="tb-dot"></span>Live Now</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="h-eyebrow">🔥 Limited Spots Available</div>
+  <h1 class="h-title">Don't Miss Your<br><span>Chance to Join</span></h1>
+  <p class="h-sub">This is your invitation to our private group. Join now before the link expires.</p>
+  <div class="members-row">
+    <div class="m-faces">
+      <div class="m-face">R</div>
+      <div class="m-face">A</div>
+      <div class="m-face">S</div>
+      <div class="m-face">+</div>
+    </div>
+    <div class="m-text">15,200+ people already joined</div>
+  </div>
+</div>
+
+<!-- LIVE TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <span class="tick-item"><span class="green">●</span> Rahul joined just now</span>
+    <span class="tick-item"><span class="green">●</span> Priya joined 1 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Amit joined 2 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Sunita joined 3 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Vikram joined 4 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Neha joined 5 min ago</span>
+    <!-- duplicate for seamless scroll -->
+    <span class="tick-item"><span class="green">●</span> Rahul joined just now</span>
+    <span class="tick-item"><span class="green">●</span> Priya joined 1 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Amit joined 2 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Sunita joined 3 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Vikram joined 4 min ago</span>
+    <span class="tick-item"><span class="green">●</span> Neha joined 5 min ago</span>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-blk">
+  <div class="redir" id="rm">✓ Opening Telegram now...</div>
+
+  <a class="big-btn" id="btn" href="#">
+    <div class="btn-body">
+      <div class="btn-left-ico">✈️</div>
+      <div class="btn-copy">
+        <div class="btn-tag">Tap to join instantly</div>
+        <div class="btn-main" id="cn2">Learning Galaxy</div>
+      </div>
+      <div class="btn-arrow-box"><span class="arr">→</span></div>
+    </div>
+  </a>
+
+  <div class="urgency">
+    <span class="urgency-dot"></span>
+    Hurry — Link expires soon!
+  </div>
+</div>
+
+<!-- TIMER -->
+<div class="timer-blk">
+  <div class="tm-top">⏳ Auto-redirecting in</div>
+  <div class="tm-row">
+    <div>
+      <div class="tm-num" id="td">60</div>
+      <div class="tm-unit">seconds</div>
+    </div>
+  </div>
+  <div class="seg-bar" id="segs"></div>
+</div>
+
+<!-- CHIPS -->
+<div class="chips-label">What you get</div>
+<div class="chips-scroll">
+  <div class="chip"><span class="chip-ico">🔔</span>Instant Alerts</div>
+  <div class="chip"><span class="chip-ico">🔒</span>Private Access</div>
+  <div class="chip"><span class="chip-ico">📲</span>Daily Updates</div>
+  <div class="chip"><span class="chip-ico">🎓</span>Verified Info</div>
+  <div class="chip"><span class="chip-ico">⚡</span>Fast Support</div>
+</div>
+
+<div class="disc">
+  For educational &amp; informational purposes only. Content does not constitute professional advice. Please make all decisions responsibly. We respect your privacy.
+</div>
+
+<div style="font-size:10px;color:#cbd5e1;text-align:center;padding-bottom:20px;">Ads managed by <b style="color:#f97316;">Sumit Ads Agency</b></div>
+
+<script>
+document.getElementById('cn').textContent=CN;
+document.getElementById('cn2').textContent=CN;
+document.getElementById('btn').href=TG;
+
+/* Build segmented bar */
+var segBar=document.getElementById('segs'),segs=[];
+for(var i=0;i<TM;i++){
+  var s=document.createElement('div');
+  s.className='seg';
+  segBar.appendChild(s);
+  segs.push(s);
+}
+
+var t=TM,td=document.getElementById('td'),rm=document.getElementById('rm');
+
+function go(){
+  rm.classList.add('on');
+  if(typeof fbq!='undefined')fbq('track','Lead');
+  setTimeout(function(){location.href=TG},900);
+}
+
+function tick(){
+  td.textContent=t;
+  /* color urgency */
+  if(t<=10)td.classList.add('red');
+  /* segments */
+  var done=TM-t;
+  for(var i=0;i<segs.length;i++){
+    segs[i].classList.toggle('done',i<done);
+  }
+  if(t<=0){go();return}
+  t--;setTimeout(tick,1000);
+}
+
+document.getElementById('btn').onclick=function(e){
+  e.preventDefault();
+  if(typeof fbq!='undefined')fbq('track','Subscribe');
+  go();
+};
+if(typeof fbq!='undefined')fbq('track','ViewContent');
+window.addEventListener('load',function(){setTimeout(tick,1000)});
+window.addEventListener('pageshow',function(e){if(e.persisted)location.reload()});
+</script>
+</body>
+</html>
